@@ -80,7 +80,7 @@ const SecondPage = () => {
           </p>
           <section css={jokebox}>
             <h3>"{aJoke}"</h3>
-            <Link to="/page-3/">
+            <Link to="/page-2/">
               <button css={button}>New joke!</button>
             </Link>
           </section>
