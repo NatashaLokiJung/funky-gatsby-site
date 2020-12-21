@@ -1,16 +1,13 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react"
+// eslint-disable-next-line
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-
 import Header from "./header"
+import Footer from "./footer"
 import "./layout.css"
+import Image from "../components/image"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -22,25 +19,30 @@ const Layout = ({ children }) => {
       }
     }
   `)
+  const imgbox = css`
+    width: 30%;
+    position: absolute;
+    z-index: 10;
+    bottom: 0;
+    right: 0;
+  `
+  const wrapper = css`
+    display: flex;
+    flex-direction: column;
+    background-color: pink;
+    min-height: 100vh;
+  `
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
+      <div css={wrapper}>
+        <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
         <main>{children}</main>
-        <footer style={{
-          marginTop: `2rem`
-        }}>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
+        <div css={imgbox}>
+          <Image />
+        </div>
+
+        <Footer />
       </div>
     </>
   )

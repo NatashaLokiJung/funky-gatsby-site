@@ -3,34 +3,32 @@ import { css } from "@emotion/react"
 import PropTypes from "prop-types"
 // eslint-disable-next-line
 import React from "react"
-import { Link } from "gatsby"
 
-const Header = ({ siteTitle }) => {
-  const headerContainer = css`
+const Footer = () => {
+  const footerContainer = css`
     display: flex;
-    min-height: 80px;
     padding: 20px;
     align-items: center;
+    position: absolute;
+    bottom: 0;
     width: 100%;
+    min-height: 80px;
     background-color: #663399;
   `
-
   return (
-    <header css={headerContainer}>
-      <div>
-        <h1>
-          <Link to="/">{siteTitle}</Link>
-        </h1>
-      </div>
-    </header>
+    <div css={footerContainer}>
+      © {new Date().getFullYear()}, Built with{" "}
+      <a href="https://www.gatsbyjs.com">Gatsby</a>
+    </div>
   )
 }
-Header.propTypes = {
+
+Footer.propTypes = {
   siteTitle: PropTypes.string,
 }
 
-Header.defaultProps = {
+Footer.defaultProps = {
   siteTitle: ``,
 }
 
-export default Header
+export default Footer
